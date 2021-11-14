@@ -1,17 +1,12 @@
 import java.util.Scanner;
 
 /*  Class Node  */
-class Nodes {
-    protected int data;
-    public Node link;
+class Nodec {
+    int data;
+    Nodec link;
 
-    /* Default Constructor  */
-    public Nodes(){
-        data=0;
-        link=null;
-    }
     /* Parameterize Constructor  */
-    public Nodes(int d,Node n){
+    public Nodec(int d,Nodec n){
         data=d;
         link=n;
     }
@@ -25,11 +20,11 @@ class Nodes {
         return data;
     }
     /*  Method to set link to next Node  */
-    public void setlink(Node n){
+    public void setlink(Nodec n){
         link=n;
     }
     /*  Method to get link to next node  */
-    public Node getlink(){
+    public Nodec getlink(){
         return link;
     }
 
@@ -38,27 +33,27 @@ class Nodes {
 /* Class Linked_List */
 class Linked_lists
 {
-    public Node head;
+    public Nodec head;
     public int size;
 
     /*  Constructor  */
     public Linked_lists(){
-        head=null;
         size =0;
     }
 
     /*  Method to insert an node at beginning  */
     public void insertAtstart(int a){
-        Node new_node = new Node(a,null);
+        Nodec new_node = new Nodec(a, null);
 
         if (head==null){
-            new_node.setlink(head);
             head=new_node;
+            new_node.setlink(head);
             size++ ;
         }
         else {
-            Node ptr = head;
-            new_node.link = head;
+            new_node.setlink(head);
+            Nodec ptr = head;
+
             while (ptr.getlink() != head) {
                 ptr = ptr.getlink();
             }
@@ -67,11 +62,11 @@ class Linked_lists
             size++;
         }
     }
+
     /*  Method to insert an node at the end */
     public void insertAtend(int b){
-        Node new_Node=new Node(b, null);
-        new_Node.setlink(head);
-        Node ptr = head;
+        Nodec new_Node=new Nodec(b, null);
+        Nodec ptr = head;
         while(ptr.getlink()!=head){
             ptr = ptr.getlink();
         }
@@ -82,8 +77,8 @@ class Linked_lists
     /*  Method to insert an node before given position */
     public void insertBeforePos(int c, int beforepos){
 
-        Node new_Node=new Node(c, null);
-        Node ptr = head;
+        Nodec new_Node=new Nodec(c, null);
+        Nodec ptr = head;
         for(int i=0; i < beforepos-1; i++){
             ptr = ptr.getlink();
         }
@@ -95,8 +90,8 @@ class Linked_lists
     /*  Method to insert an node after given position */
     public void insertAfterPos(int d, int afterpos){
 
-        Node new_Node=new Node(d, null);
-        Node ptr = head;
+        Nodec new_Node=new Nodec(d, null);
+        Nodec ptr = head;
         for(int i=0; i < afterpos; i++){
             ptr = ptr.getlink();
         }
@@ -111,43 +106,58 @@ class Linked_lists
             System.out.println("Empty");
         }
         else{
+            Nodec ptr = head;
+            while(ptr.getlink()!=head){
+                ptr = ptr.getlink();
+            }
+            ptr.setlink(head.getlink());
             head=head.getlink();
             size--; }
     }
     /*  Method to delete the last node */
     public void delend(){
-        Node ptr = head;
-        Node pptr = head;
         if (head == null){
             System.out.println("Linked List is Empty");
         }
         else{
-            while(ptr.getlink()!=null){
-                pptr = ptr;
-                ptr=ptr.getlink();
+            Nodec ptr = head;
+            while ((ptr.getlink()).getlink()!=head){
+                ptr = ptr.getlink();
             }
-            pptr.setlink(null);
+            ptr.setlink(head);
             size--;
         }
 
     }
-    /*  Method to delete a node before given node */
     public void delBefPos(int D){
-        Node ptr = head;
-        Node pptr;
-        while(ptr.getdata() != D){
+        Nodec ptr = head;
+        Nodec pptr = head;
+        for(int i=0; i < D-1; i++){
+            pptr = ptr;
             ptr = ptr.getlink();
         }
-        pptr=ptr;
-        ptr.setlink(pptr);
+        pptr.setlink(ptr.link);
+        ptr.setlink(null);
         size--;
     }
 
+    /*  Method to delete a node before given node */
+    public void delAftPos(int E){
+        Nodec ptr = head;
+        Nodec pptr = head;
+        for(int i=0; i < E+1; i++){
+            pptr = ptr;
+            ptr = ptr.getlink();
+        }
+        pptr.setlink(ptr.link);
+        ptr.setlink(null);
+        size--;
+    }
     /*  Method to display nodes in linked list  */
     public void display(){
-        Node ptr = head;
+        Nodec ptr = head;
         System.out.print("->");
-        while (ptr.getlink() != null)
+        while (ptr.getlink() != head)
         {
             System.out.print(ptr.getdata()+ "->");
             ptr = ptr.getlink();

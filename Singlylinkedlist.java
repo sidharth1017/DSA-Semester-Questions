@@ -100,6 +100,7 @@ class Linked_list
             System.out.println("Empty");
         }
         else{
+            System.out.println("Deleted node: " + head.getdata());
             head=head.getlink();
             size--; }
     }
@@ -115,6 +116,7 @@ class Linked_list
                 pptr = ptr;
                 ptr=ptr.getlink();
             }
+            System.out.println("Deleted node: " + ptr.getdata());
             pptr.setlink(null);
             size--;
         }
@@ -123,24 +125,26 @@ class Linked_list
     /*  Method to delete a node before given node */
     public void delBefPos(int D){
         Node ptr = head;
-        Node pptr;
-        while(ptr.getdata() != D){
+        Node pptr = head;
+        for(int i=0; i < D-1; i++){
+            pptr = ptr;
             ptr = ptr.getlink();
         }
-        pptr=ptr;
-        ptr.setlink(pptr);
+        pptr.setlink(ptr.link);
+        ptr.setlink(null);
         size--;
     }
 
     /*  Method to delete a node before given node */
     public void delAftPos(int E){
         Node ptr = head;
-        Node pptr;
-        while(ptr.getdata() != E){
+        Node pptr = head;
+        for(int i=0; i < E+1; i++){
+            pptr = ptr;
             ptr = ptr.getlink();
         }
-        pptr=ptr;
-        ptr.setlink(pptr);
+        pptr.setlink(ptr.link);
+        ptr.setlink(null);
         size--;
     }
 
@@ -250,14 +254,14 @@ public class Singlylinkedlist {
                                 break;
                             case 3:
                                 System.out.println("Delete before a given node");
-                                System.out.println("Data: ");
+                                System.out.println("Position: ");
                                 int D = sc.nextInt();
                                 list.delBefPos(D);
                                 list.display();
                                 break;
                             case 4:
                                 System.out.println("Delete after a given node");
-                                System.out.println("Data: ");
+                                System.out.println("Position: ");
                                 int E = sc.nextInt();
                                 list.delAftPos(E);
                                 list.display();
