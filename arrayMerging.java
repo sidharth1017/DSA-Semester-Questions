@@ -36,10 +36,10 @@ public class arrayMerging {
         for(k=0, i=0; i<s1; i++, k++){
             C[k] = A[i];
         }
-        for(k=s1, j=0; j<(s1+s2); j++, k++){
+        for(k=s1, j=0; j<s2; j++, k++){
             C[k] = B[j];
         }
-        System.out.print(" \nValues of new Mergeed array is:- ");
+        System.out.print(" \nValues of new Merged array is:- ");
         for(k=0; k<(s1+s2); k++){
             System.out.print(C[k] + " ");
         }

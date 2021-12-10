@@ -32,7 +32,7 @@ public class arrayinsertion {
         size = size+1; //This will increase the size of array
 
         System.out.println("Insertion is succesfull");
-        System.out.println("new array after insertion");
+        System.out.println("New array after insertion");
         for (i=0; i<size;i++)
         {
             System.out.print(a[i]+ " ");

@@ -37,14 +37,14 @@ class binsearch{
 public class arrayBinarySearch{
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
-        System.out.println("enter Size");
+        System.out.println("Enter Size of Array");
         int n=sc.nextInt();
         int A[]=new int[n];
-        System.out.println("enter Values in array");
+        System.out.println("Enter Values in array");
         for(int i=0;i<n;i++){
             A[i]=sc.nextInt();
         }
-        System.out.println("enter no to find");
+        System.out.println("Enter no to find");
         int m=sc.nextInt();
         binsearch bs=new binsearch(A,n,m);
         bs.sort();

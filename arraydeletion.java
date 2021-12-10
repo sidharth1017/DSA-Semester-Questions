@@ -17,7 +17,7 @@ public class arraydeletion {
             System.out.print(a[i]+ " ");
         }
 
-        System.out.println("Enter the position");
+        System.out.println("\nEnter the position where you want to delete the value");
         pos = ip.nextInt();
         i = pos + 1;
         while(i<size){
@@ -26,7 +26,7 @@ public class arraydeletion {
         }
         size = size - 1;
         System.out.println("Deletion is succesfull");
-        System.out.println("new array after deletion");
+        System.out.println("New array after deletion");
         for (i=0; i<size;i++)
         {
             System.out.print(a[i]+ " ");
